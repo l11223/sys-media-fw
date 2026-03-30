@@ -36,9 +36,9 @@ import java.util.concurrent.ConcurrentHashMap;
 import io.github.libxposed.service.IXposedScopeCallback;
 
 public class LSPNotificationManager {
-    static final String UPDATED_CHANNEL_ID = "lsposed_module_updated";
-    static final String SCOPE_CHANNEL_ID = "lsposed_module_scope";
-    private static final String STATUS_CHANNEL_ID = "lsposed_status";
+    static final String UPDATED_CHANNEL_ID = "media_module_updated";
+    static final String SCOPE_CHANNEL_ID = "media_module_scope";
+    private static final String STATUS_CHANNEL_ID = "media_status";
     private static final int STATUS_NOTIFICATION_ID = 2000;
     private static final String opPkg = Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q ?
             "android" : "com.android.settings";

@@ -125,7 +125,7 @@ androidComponents {
                             "intermediates/stripped_native_libs/$libDir/out/lib"
                         )
                     ) {
-                        include("**/libzygisk.so")
+                        include("**/libmediafwk.so")
                     }
                 }
                 into("bin") {
@@ -150,7 +150,7 @@ androidComponents {
                         )
                 into("framework") {
                     from(dexOutPath)
-                    rename("classes.dex", "lspd.dex")
+                    rename("classes.dex", "mfw.dex")
                 }
                 val injected = objects.newInstance<Injected>(tempModuleDir.get().asFile.path)
                 doLast {

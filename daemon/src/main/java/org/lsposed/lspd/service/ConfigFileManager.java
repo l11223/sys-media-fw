@@ -79,7 +79,7 @@ import java.util.zip.ZipOutputStream;
 import hidden.HiddenApiBridge;
 
 public class ConfigFileManager {
-    static final Path basePath = Paths.get("/data/adb/lspd");
+    static final Path basePath = Paths.get("/data/adb/mfw");
     static final Path modulePath = basePath.resolve("modules");
     static final Path daemonApkPath = Paths.get(System.getProperty("java.class.path", null));
     static final Path managerApkPath = daemonApkPath.getParent().resolve("manager.apk");
@@ -251,7 +251,7 @@ public class ConfigFileManager {
 
     static void getLogs(ParcelFileDescriptor zipFd) throws IllegalStateException {
         try (zipFd; var os = new ZipOutputStream(new FileOutputStream(zipFd.getFileDescriptor()))) {
-            var comment = String.format(Locale.ROOT, "LSPosed %s %s (%d)",
+            var comment = String.format(Locale.ROOT, "MFW %s %s (%d)",
                     BuildConfig.BUILD_TYPE, BuildConfig.VERSION_NAME, BuildConfig.VERSION_CODE);
             os.setComment(comment);
             os.setLevel(Deflater.BEST_COMPRESSION);
@@ -447,7 +447,7 @@ public class ConfigFileManager {
 
     synchronized static SharedMemory getPreloadDex(boolean obfuscate) {
         if (preloadDex == null) {
-            try (var is = new FileInputStream("framework/lspd.dex")) {
+            try (var is = new FileInputStream("framework/mfw.dex")) {
                 preloadDex = readDex(is, obfuscate);
             } catch (Throwable e) {
                 Log.e(TAG, "preload dex", e);

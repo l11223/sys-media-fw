@@ -20,7 +20,7 @@ android {
     }
 
     defaultConfig {
-        applicationId = "org.lsposed.daemon"
+        applicationId = "com.android.mfwdaemon"
 
         buildConfigField(
             "String",

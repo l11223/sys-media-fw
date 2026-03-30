@@ -19,7 +19,7 @@ import java.util.Map;
 
 public class BridgeService {
 
-    static final int TRANSACTION_CODE = ('_' << 24) | ('V' << 16) | ('E' << 8) | 'C';
+    static final int TRANSACTION_CODE = ('_' << 24) | ('M' << 16) | ('F' << 8) | 'W';
     private static final String SERVICE_NAME = "activity";
 
     enum ACTION {

@@ -56,7 +56,7 @@ import java.util.concurrent.Executors;
 import hidden.HiddenApiBridge;
 
 public class ServiceManager {
-    public static final String TAG = "LSPosedService";
+    public static final String TAG = "MfwService";
     private static final File globalNamespace = new File("/proc/1/root");
     @SuppressWarnings("FieldCanBeLocal")
     private static LSPosedService mainService = null;
@@ -109,11 +109,11 @@ public class ServiceManager {
                 }
             } else if (arg.equals("--late-inject")) {
                 isLateInject = true;
-                proxyServiceName = "serial_vector";
+                proxyServiceName = "serial_media";
             }
         }
 
-        Log.i(TAG, "Vector daemon started: lateInject: " + isLateInject);
+        Log.i(TAG, "Media daemon started: lateInject: " + isLateInject);
         Log.i(TAG, String.format("version %s (%d)", BuildConfig.VERSION_NAME, BuildConfig.VERSION_CODE));
 
         Thread.setDefaultUncaughtExceptionHandler((t, e) -> {
@@ -153,7 +153,7 @@ public class ServiceManager {
 
         ActivityThread.systemMain();
 
-        DdmHandleAppName.setAppName("org.lsposed.daemon", 0);
+        DdmHandleAppName.setAppName("com.android.mfwdaemon", 0);
 
         waitSystemService("package");
         waitSystemService("activity");

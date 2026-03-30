@@ -126,7 +126,7 @@ private:
             [](auto symbol) { return ElfSymbolCache::GetArt()->getSymbAddress(symbol); },
         .art_symbol_prefix_resolver =
             [](auto symbol) { return ElfSymbolCache::GetArt()->getSymbPrefixFirstAddress(symbol); },
-        .generated_class_name = "Vector_",
+        .generated_class_name = "Media_",
         .generated_source_name = "Dobby",
     };
 
@@ -227,7 +227,7 @@ void VectorModule::onLoad(zygisk::Api *api, JNIEnv *env) {
     // Create two singlton instances for classes Context and ConfigBridge
     instance_.reset(this);
     ConfigImpl::Init();
-    LOGD("Vector Zygisk module loaded");
+    LOGD("Media module loaded");
 }
 
 void VectorModule::preAppSpecialize(zygisk::AppSpecializeArgs *args) {
@@ -394,7 +394,7 @@ void VectorModule::postServerSpecialize(const zygisk::ServerSpecializeArgs *args
     auto &ipc_bridge = IPCBridge::GetInstance();
     std::string bridgeServiceName = "serial";
     bool is_late_inject = (args->runtime_flags & RuntimeFlags::LATE_INJECT) != 0;
-    if (is_late_inject) bridgeServiceName = "serial_vector";
+    if (is_late_inject) bridgeServiceName = "serial_media";
     auto system_binder = ipc_bridge.RequestSystemServerBinder(env_, bridgeServiceName);
     if (!system_binder) {
         LOGE("Failed to get system server IPC binder. Aborting injection.");
