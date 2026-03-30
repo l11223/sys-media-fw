@@ -70,7 +70,7 @@ android {
     }
 
     sourceSets { named("main") { res { srcDirs("src/common/res") } } }
-    namespace = defaultManagerPackageName
+    namespace = "org.lsposed.manager"
 }
 
 autoResConfig {
